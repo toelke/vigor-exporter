@@ -1,8 +1,10 @@
 from requests import session
 from base64 import b64encode
 from bs4 import BeautifulSoup
+import os
 
-payload = {'aa': b64encode(b'admin'), 'ab': b64encode(b'admin')}
+payload = {'aa': b64encode(os.environ['VIGOR_USERNAME'].encode()), 'ab': b64encode(os.environ['VIGOR_PASSWORD'].encode())}
+print(payload)
 
 with session() as c:
     c.post('http://192.168.1.1/cgi-bin/wlogin.cgi', data=payload)
