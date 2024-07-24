@@ -84,6 +84,7 @@ class CustomCollector(Collector):
                     c.add_metric(["upstream"] + [] if usu is None else [usu], float(us))
                     yield c
         except:
+            self.session = None
             if retry:
                 return self.collect(retry=False)
             raise
