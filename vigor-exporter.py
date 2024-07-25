@@ -71,19 +71,19 @@ class CustomCollector(Collector):
                     c = GaugeMetricFamily(
                         f"vigor_line_statistic_{name.replace(' ', '_').lower()}",
                         f"Vigor line statistic {name}",
-                        labels=["direction"] + [] if usu is None and dsu is None else ["unit"],
+                        labels=["direction"] + ([] if usu is None and dsu is None else ["unit"]),
                     )
-                    c.add_metric(["downstream"] + [] if dsu is None else [dsu], float(ds))
-                    c.add_metric(["upstream"] + [] if usu is None else [usu], float(us))
+                    c.add_metric(["downstream"] + ([] if dsu is None else [dsu]), float(ds))
+                    c.add_metric(["upstream"] + ([] if usu is None else [usu]), float(us))
                     yield c
                 else:
                     c = CounterMetricFamily(
                         f"vigor_line_statistic_{name.replace(' ', '_').lower()}",
                         f"Vigor line statistic {name}",
-                        labels=["direction"] + [] if usu is None and dsu is None else ["unit"],
+                        labels=["direction"] + ([] if usu is None and dsu is None else ["unit"]),
                     )
-                    c.add_metric(["downstream"] + [] if dsu is None else [dsu], float(ds))
-                    c.add_metric(["upstream"] + [] if usu is None else [usu], float(us))
+                    c.add_metric(["downstream"] + ([] if dsu is None else [dsu]), float(ds))
+                    c.add_metric(["upstream"] + ([] if usu is None else [usu]), float(us))
                     yield c
         except:
             self.session = None
