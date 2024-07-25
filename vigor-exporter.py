@@ -1,10 +1,12 @@
-from requests import session
-from base64 import b64encode
-from bs4 import BeautifulSoup
 import os
+from base64 import b64encode
+
+from bs4 import BeautifulSoup
 from prometheus_client import make_wsgi_app
-from prometheus_client.core import REGISTRY, CounterMetricFamily, GaugeMetricFamily
+from prometheus_client.core import (REGISTRY, CounterMetricFamily,
+                                    GaugeMetricFamily)
 from prometheus_client.registry import Collector
+from requests import session
 
 
 class CustomCollector(Collector):
